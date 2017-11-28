@@ -6,7 +6,7 @@ import os,os.path,sys
 #sys.dont_write_bytecode = True
 
 def modcmd(arg):
-  os.system(sys.executable+" ""/sdcard/org.qpython.qpy/scripts/"+arg)
+  os.system(sys.executable+" ""/sdcard/qpython/scripts/"+arg)
 
 print("Input full script name placed in scripts directory.")
 while(True):
