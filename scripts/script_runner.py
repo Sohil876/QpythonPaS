@@ -4,16 +4,21 @@
 
 import os,sys
 
-os.chdir('/sdcard/qpython/scripts/')
-filelist = next(os.walk('.'))[2]
+dir = '/sdcard/qpython/scripts/'
+os.chdir(dir)
+filelist = list(os.listdir('.'))
+theDict = dict()
 print "Python files in your scripts directory:"
 for file in filelist:
     if file.endswith(".py"):
-        print(os.path.join(file))
+        theStats = os.stat(file)
+        theDict[file] = theStats
+for item in theDict:
+    print("File: {:30s} Size: {:.2f} KB" .format(item,theDict[item].st_size/1024.0))
 print("Input full name of your file:")
 def modcmd(arg):
-    arg2 = ('"{}"'.format(arg))
-    os.system(sys.executable+' '+arg2)
+    filename = ('"{}"'.format(arg))
+    os.system(sys.executable+' '+filename)
 while(True):
   cmd=raw_input("-->")
   if (cmd==""): break;
